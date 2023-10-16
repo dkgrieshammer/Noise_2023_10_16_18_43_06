@@ -34,3 +34,10 @@ function draw() {
 
   // line(0, 0, 20, 0);
 }
+
+function keyPressed() {
+  if (key == 's' || key == 'S') {
+    console.log('save');
+    saveCanvas("poster", 'png');
+  }
+}
