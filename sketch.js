@@ -1,11 +1,12 @@
 let nOffset = 0.0;
 let noiseStep = 0.003;
-let density = 10;
+let density = 20;
 
 
 function setup() {
   createCanvas(600, 800);
   angleMode(DEGREES)
+  colorMode(HSB)
   strokeWeight(0.5)
 }
 
@@ -21,18 +22,18 @@ function draw() {
     push()
     for (let x = 0; x < density; x++) {
       translate(step, 0);
-      push()
       tmpOff += 0.004;
       let dir = noise(tmpOff) * 360;
+      push()
       rotate(dir);
-      line(0, 0, 40, 0)
+      line(0, 0, 10, 0)
       pop()
     }
     pop()
   }
   pop()
 
-  // line(0, 0, 20, 0);
+  drawTitle()
 }
 
 function keyPressed() {
@@ -40,4 +41,15 @@ function keyPressed() {
     console.log('save');
     saveCanvas("poster", 'png');
   }
+}
+
+function drawTitle() {
+  push();
+  translate(width - 50, height - 100)
+  textAlign(RIGHT)
+  fill(200, 10, 20)
+  textSize(20);
+  text("QUITE NOISE", 20, 30);
+  text("Grieshammer, WS23", 20, 60);
+  pop();
 }
